@@ -7,6 +7,10 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 app.post("/webhook", (req, res) => {
+  // ✅ Log incoming request to help debug
+  console.log("🌐 Incoming request from Dialogflow:");
+  console.log(JSON.stringify(req.body, null, 2));
+
   const tag = req.body.fulfillmentInfo.tag;
   let responseText = "Sorry, I didn't understand that.";
 
